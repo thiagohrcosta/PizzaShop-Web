@@ -8,6 +8,8 @@ import { z } from "zod"
 import { toast } from "sonner"
 
 import { Link } from "react-router-dom"
+import { useMutation } from "@tanstack/react-query"
+import { signIn } from "@/api/sign-in"
 
 const signInForm = z.object({
   email: z.string().email(),
@@ -18,17 +20,23 @@ type SignInForm = z.infer<typeof signInForm>
 export function SignIn() {
   const { register, handleSubmit, formState: { isSubmitting } } = useForm<SignInForm>()
 
+  const { mutateAsync: authenticate } = useMutation({
+    mutationFn: signIn,
+  })
+
   async function handleSignIn(data: SignInForm) {
-    console.log(data)
+    try {
+      await authenticate({ email: data.email })
 
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-
-    toast.success("Autentication link sent to you email", {
-      action: {
-        label: "Send again",
-        onClick: () => handleSignIn(data),
-      },
-    })
+      toast.success("Autentication link sent to you email", {
+        action: {
+          label: "Send again",
+          onClick: () => handleSignIn(data),
+        },
+      })
+    } catch {
+      toast.error("Invalid credentials.")
+    }   
   }
 
   return (
