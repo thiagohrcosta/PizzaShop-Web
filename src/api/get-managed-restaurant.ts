@@ -4,6 +4,7 @@ interface GetManageRestaurantResponse {
   id: string
   name: string
   email: string
+  description: string
   phone: string | null
   role: 'manager' | 'cutomer'
   createdAt: Date | null
