@@ -3,10 +3,23 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { ArrowRight, Search, X } from "lucide-react";
 import { OrderDetails } from "./order-details";
+import { OrderStatus } from "@/components/order-status";
+
+import { formatDistanceToNow } from 'date-fns'
+import { enUS } from 'date-fns/locale'
 
 // export interface OrderTableRowProps {}
+export interface OrderTableRowProps {
+  order: {
+    orderId: string
+    createdAt: string
+    status: 'pending' | 'canceled' | 'processing' | 'delivering' | 'delivered'
+    customerName: string
+    total: number
+  }
+}
 
-export function OrderTableRow() {
+export function OrderTableRow({ order }: OrderTableRowProps) {
   return (
     <TableRow>
       <TableCell>
@@ -17,27 +30,26 @@ export function OrderTableRow() {
               <span className="sr-only">Orders Detail</span>
             </Button>
           </DialogTrigger>
-          
           <OrderDetails />
         </Dialog>
       </TableCell>
       <TableCell className="font-mono text-sm font-medium">
-        3a9d02090d0asfg0df
+        {order.orderId}
       </TableCell>
       <TableCell className="text-muted-foreground">
-        15 min ago
+        {formatDistanceToNow(order.createdAt, {
+          locale: enUS,
+          addSuffix: true
+        })}
       </TableCell>
       <TableCell>
-        <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-slate-400" />
-          <span className="font-medium text-muted-foreground">Pending</span>
-        </div>
+        <OrderStatus status={order.status} />
       </TableCell>
       <TableCell className="font-medium">
-        John Doe
+        {order.customerName}
       </TableCell>
       <TableCell className="font-medium">
-        $ 149.90
+        {order.total.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
       </TableCell>
       <TableCell>
         <Button variant="outline" size="xs">
