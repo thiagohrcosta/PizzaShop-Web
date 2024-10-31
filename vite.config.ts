@@ -2,12 +2,21 @@ import path from "node:path"
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
+import type { UserConfig } from "vitest/node"
+import type { InlineConfig } from 'vitest/node'
+
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
+  test: {
+    globals: true,
+    setupFiles: ['./test/setup.ts'],
+    environment: 'happy-dom',
+  },
+} as UserConfig & {
+  test: InlineConfig
 })
