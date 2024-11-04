@@ -16,6 +16,7 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./test/setup.ts'],
     environment: 'happy-dom',
+    include: ['src/**/*.spec.tsx'],  // Inclui todos os arquivos de teste .spec.tsx
   },
 } as UserConfig & {
   test: InlineConfig
