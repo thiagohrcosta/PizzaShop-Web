@@ -57,19 +57,19 @@ export function SignIn() {
         <div className="w-[350px] flex flex-col justify-center gap-6">
           <div className="flex flex-col gap-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tighter">
-              Acessar painel
+              Painel Access
             </h1>
             <p className="text-sm text-muted-foreground">
-              Acompanhe suas vendas pelo painel do parceiro!
+              Track your sales through the partner dashboard!
             </p>
           </div>
           
           <form className="space-y-4" onSubmit={handleSubmit(handleSignIn)}>
             <div className="space-y-2">
-              <Label htmlFor="email">Seu e-mail</Label>
+              <Label htmlFor="email">Your e-mail</Label>
               <Input id="email" type="email" {...register('email')} />
             </div>
-            <Button disabled={isSubmitting} className="w-full" type="submit">Acessar painel</Button>
+            <Button disabled={isSubmitting} className="w-full" type="submit">Login to painel</Button>
           </form>
         </div>
       </div>
