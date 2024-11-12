@@ -5,7 +5,6 @@ import { ArrowRight, Search, X } from "lucide-react";
 import { OrderDetails } from "./order-details";
 import { OrderStatus } from "@/components/order-status";
 
-import { formatDistanceToNow } from 'date-fns'
 import { enUS } from 'date-fns/locale'
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -14,6 +13,7 @@ import { GetOrdersResponse } from "@/api/get-orders";
 import { approveOrder } from "@/api/approve-order";
 import { dispatchOrder } from "@/api/dispatch-order";
 import { deliverOrder } from "@/api/deliver-order";
+import { formatDistanceToNow } from "date-fns";
 
 // export interface OrderTableRowProps {}
 export interface OrderTableRowProps {
