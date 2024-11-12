@@ -11,7 +11,7 @@ export function AuthLayout() {
           </Pizza>
         </div>
         <footer className="text-sm">
-          Painel do parceiro &copy; pizza.shop - { new Date().getFullYear() }
+          Partner Dashboard &copy; pizza.shop - { new Date().getFullYear() }
         </footer>
       </div>
       <div className="flex flex-col items-center justify-center relative">
