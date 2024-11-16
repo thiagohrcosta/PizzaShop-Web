@@ -79,7 +79,7 @@ export function StoreProfileDialog() {
         description: data.description
       })
 
-      toast.success('Profile updated with successfully"')
+      toast.success('Profile successfully updated!')
     } catch {
       toast.error('Failure to update profile, try it again"')
     }
