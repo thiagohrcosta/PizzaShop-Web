@@ -20,3 +20,4 @@
 This project not only highlights my expertise in **full-stack development**, **system integration**, and **best programming practices**, but also reflects the knowledge and skills acquired during the **Rocketseat ReactJS specialization**.
 
 ## Certificate
+![image](https://github.com/user-attachments/assets/0ccb1b10-39e0-4545-9f6e-5926c01bea72)
