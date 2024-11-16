@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+
 test('sign up successfully', async ({ page }) => {
   await page.goto('/sign-up', { waitUntil: 'networkidle' })
   await page.getByLabel('Company Name').fill('Pizza Shop')
@@ -9,6 +10,7 @@ test('sign up successfully', async ({ page }) => {
   const toast = page.getByText('Restaurant successfully created')
   expect(toast).toBeVisible()
 })
+
 test('sign up with error', async ({ page }) => {
   await page.goto('/sign-up', { waitUntil: 'networkidle' })
   await page.getByLabel('Company Name').fill('Invalid name')
@@ -19,6 +21,7 @@ test('sign up with error', async ({ page }) => {
   const toast = page.getByText('Error while trying to create your restaurant account.')
   expect(toast).toBeVisible()
 })
+
 test('navigate to login page', async ({ page }) => {
   await page.goto('/sign-up', { waitUntil: 'networkidle' })
   await page.getByRole('link', { name: 'Login' }).click()
