@@ -6,7 +6,8 @@ test('sign in successfully', async ({ page }) => {
   const toast = page.getByText(
     'Autentication link sent to you email',
   )
-  expect(toast).toBeVisible()
+  
+  await expect(toast).toBeVisible()
 
   await page.waitForTimeout(2000)
 })
@@ -17,7 +18,7 @@ test('sign in with wrong credentials', async ({ page }) => {
   await page.getByRole('button', { name: 'Login to painel' }).click()
   const toast = page.getByText('Invalid credentials.')
 
-  expect(toast).toBeVisible()
+  await expect(toast).toBeVisible()
 
   await page.waitForTimeout(2000)
 })
@@ -25,5 +26,6 @@ test('sign in with wrong credentials', async ({ page }) => {
 test('navigate to new restaurant page', async ({ page }) => {
   await page.goto('/sign-in', { waitUntil: 'networkidle' })
   await page.getByRole('link', { name: 'New company' }).click()
+  
   expect(page.url()).toContain('/sign-up')
 })
